@@ -78,6 +78,10 @@ export const projects = [
     featured: true,
     color: '#4a6b5a',
     image: null,
+    // Paste your deployed project URL here, for example: 'https://healthguardian.vercel.app'
+    liveUrl: '',
+    // Paste your GitHub repository URL here, for example: 'https://github.com/Abhijeetrajbhar/healthguardian'
+    sourceUrl: '',
   },
   {
     id: 2,
@@ -89,6 +93,8 @@ export const projects = [
     featured: true,
     color: '#c97b3a',
     image: null,
+    liveUrl: '',
+    sourceUrl: '',
   },
   {
     id: 3,
@@ -100,6 +106,8 @@ export const projects = [
     featured: true,
     color: '#6b8f7c',
     image: null,
+    liveUrl: '',
+    sourceUrl: '',
   },
 ]
 

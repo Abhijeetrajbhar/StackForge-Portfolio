@@ -11,10 +11,10 @@ export default function Testimonials() {
   const next = () => setActive((a) => (a + 1) % testimonials.length)
 
   return (
-    <section id="testimonials" className="py-32 px-6 md:px-12 bg-graphite-950 overflow-hidden">
+    <section id="testimonials" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12 bg-graphite-950 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div ref={ref} className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div>
+        <div ref={ref} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+          <div className="w-full md:w-auto">
             <span className="section-tag">RECOGNITION</span>
             <h2
               className={`font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${

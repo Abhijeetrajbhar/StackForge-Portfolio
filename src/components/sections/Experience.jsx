@@ -64,7 +64,7 @@ export default function Experience() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="experience" className="py-32 px-6 md:px-12">
+    <section id="experience" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left label */}
@@ -84,7 +84,7 @@ export default function Experience() {
                 inView ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              A decade of architectural digital design and high-performance engineering for global creative leaders.
+              Building scalable full-stack projects with responsive interfaces, secure APIs, and clean user flows.
             </p>
 
             {/* Decorative element */}

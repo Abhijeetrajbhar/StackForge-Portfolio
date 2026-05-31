@@ -3,14 +3,26 @@ import { useInView } from '../../hooks'
 import { projects } from '../../data'
 import { FiExternalLink, FiGithub } from 'react-icons/fi'
 
-const filters = ['ALL', 'ECOMMERCE', 'DASHBOARD', 'SAAS', 'PORTFOLIO', 'FINTECH']
-
 function ProjectCard({ project, index, inView }) {
   const [hovered, setHovered] = useState(false)
+  const projectActions = [
+    project.liveUrl && {
+      href: project.liveUrl,
+      label: 'Live Preview',
+      icon: FiExternalLink,
+      className: 'border-beige-300/40 text-beige-300 hover:bg-beige-300 hover:text-graphite-900',
+    },
+    project.sourceUrl && {
+      href: project.sourceUrl,
+      label: 'Source Code',
+      icon: FiGithub,
+      className: 'border-ivory-200/20 text-ivory-300/60 hover:bg-ivory-200/10 hover:text-ivory-100',
+    },
+  ].filter(Boolean)
 
   return (
     <div
-      className={`group relative transition-all duration-700 ${
+      className={`group relative min-w-0 transition-all duration-700 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       } ${project.featured ? 'md:col-span-2' : ''}`}
       style={{ transitionDelay: `${index * 100}ms` }}
@@ -40,27 +52,27 @@ function ProjectCard({ project, index, inView }) {
         </div>
 
         {/* Overlay on hover */}
-        <div
-          className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
-            hovered ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ background: 'rgba(13,12,11,0.7)', backdropFilter: 'blur(8px)' }}
-        >
-          <a
-            href="#"
-            className="w-12 h-12 rounded-full border border-beige-300/40 flex items-center justify-center text-beige-300 hover:bg-beige-300 hover:text-graphite-900 transition-all duration-300"
-            onClick={(e) => e.preventDefault()}
+        {projectActions.length > 0 && (
+          <div
+            className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
+              hovered ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ background: 'rgba(13,12,11,0.7)', backdropFilter: 'blur(8px)' }}
           >
-            <FiExternalLink size={16} />
-          </a>
-          <a
-            href="#"
-            className="w-12 h-12 rounded-full border border-ivory-200/20 flex items-center justify-center text-ivory-300/60 hover:bg-ivory-200/10 transition-all duration-300"
-            onClick={(e) => e.preventDefault()}
-          >
-            <FiGithub size={16} />
-          </a>
-        </div>
+            {projectActions.map(({ href, label, icon: Icon, className }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.title} ${label}`}
+                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-300 ${className}`}
+              >
+                <Icon size={16} />
+              </a>
+            ))}
+          </div>
+        )}
 
         {/* Category badge */}
         <div className="absolute top-4 left-4">
@@ -78,10 +90,10 @@ function ProjectCard({ project, index, inView }) {
       </div>
 
       {/* Project info */}
-      <div className="flex justify-between items-start">
-        <div>
-          <div className="flex items-baseline gap-3 mb-2">
-            <h3 className="font-display text-2xl text-ivory-100 group-hover:text-beige-300 transition-colors duration-300">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+            <h3 className="font-display text-2xl text-ivory-100 group-hover:text-beige-300 transition-colors duration-300 break-words">
               {project.title}
             </h3>
             <span className="font-mono text-2xs text-ivory-300/30">{project.year}</span>
@@ -101,6 +113,23 @@ function ProjectCard({ project, index, inView }) {
           </span>
         ))}
       </div>
+
+      {projectActions.length > 0 && (
+        <div className="flex flex-wrap gap-3 mt-5">
+          {projectActions.map(({ href, label, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-ivory-200/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.15em] text-ivory-300/60 transition-all duration-300 hover:border-beige-300/40 hover:text-beige-300"
+            >
+              <Icon size={13} />
+              {label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -108,17 +137,18 @@ function ProjectCard({ project, index, inView }) {
 export default function Projects() {
   const [filter, setFilter] = useState('ALL')
   const [ref, inView] = useInView()
+  const filters = ['ALL', ...new Set(projects.map((project) => project.category))]
 
   const filtered = filter === 'ALL' ? projects : projects.filter((p) => p.category === filter)
 
   return (
-    <section id="projects" className="py-32 px-6 md:px-12 bg-graphite-950">
+    <section id="projects" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12 bg-graphite-950">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="mb-20">
           <span className="section-tag">SELECTED WORKS</span>
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
             <h2
-              className={`font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${
+              className={`w-full md:w-auto font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -134,7 +164,7 @@ export default function Projects() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`font-mono text-2xs tracking-[0.15em] uppercase px-5 py-2 border transition-all duration-300 rounded-full ${
+                className={`font-mono text-[10px] sm:text-2xs tracking-[0.15em] uppercase px-4 sm:px-5 py-2 border transition-all duration-300 rounded-full ${
                   filter === f
                     ? 'border-beige-300/50 text-beige-300 bg-beige-300/10'
                     : 'border-ivory-200/10 text-ivory-300/40 hover:border-ivory-200/30 hover:text-ivory-300/70'

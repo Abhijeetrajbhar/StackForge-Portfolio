@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useInView } from '../../hooks'
 import { personalInfo } from '../../data'
-import { FiArrowRight, FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiMail, FiMapPin } from 'react-icons/fi'
+import { FiArrowRight, FiCheck, FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiMail, FiMapPin } from 'react-icons/fi'
 
 const socials = [
   { icon: FiGithub, href: personalInfo.socials.github, label: 'GH' },
   { icon: FiLinkedin, href: personalInfo.socials.linkedin, label: 'LI' },
   { icon: FiTwitter, href: personalInfo.socials.twitter, label: 'TW' },
   { icon: FiDribbble, href: personalInfo.socials.dribbble, label: 'DR' },
-]
+].filter(({ href }) => Boolean(href))
 
 function FloatingInput({ id, label, type = 'text', multiline = false, value, onChange }) {
   const Tag = multiline ? 'textarea' : 'input'
@@ -66,12 +66,12 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 px-6 md:px-12">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <div ref={ref} className="glass-card rounded-2xl overflow-hidden">
+        <div ref={ref} className="glass-card rounded-lg overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* Info side */}
-            <div className="lg:w-2/5 p-10 md:p-16 bg-graphite-800/30 border-b lg:border-b-0 lg:border-r border-ivory-200/5">
+            <div className="lg:w-2/5 p-6 sm:p-10 md:p-16 bg-graphite-800/30 border-b lg:border-b-0 lg:border-r border-ivory-200/5">
               <span className="section-tag">GET IN TOUCH</span>
               <h2
                 className={`font-display text-[clamp(2rem,5vw,4rem)] leading-none mb-14 transition-all duration-1000 ${
@@ -97,7 +97,7 @@ export default function Contact() {
                   </div>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="font-heading text-lg text-ivory-200 hover:text-beige-300 transition-colors duration-300"
+                    className="font-heading text-base sm:text-lg text-ivory-200 hover:text-beige-300 transition-colors duration-300 break-all"
                   >
                     {personalInfo.email}
                   </a>
@@ -130,7 +130,7 @@ export default function Contact() {
 
             {/* Form side */}
             <div
-              className={`lg:w-3/5 p-10 md:p-16 transition-all duration-1000 delay-300 ${
+              className={`lg:w-3/5 p-6 sm:p-10 md:p-16 transition-all duration-1000 delay-300 ${
                 inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
               }`}
             >
@@ -138,7 +138,7 @@ export default function Contact() {
                 <div className="h-full flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-full border border-emerald-soft/40 flex items-center justify-center mx-auto mb-6">
-                      <span className="text-emerald-soft text-2xl">✓</span>
+                      <FiCheck className="text-emerald-soft" size={24} />
                     </div>
                     <h3 className="font-display text-2xl text-ivory-100 mb-3">Message Sent</h3>
                     <p className="font-mono text-2xs tracking-[0.2em] text-ivory-300/40 uppercase">

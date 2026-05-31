@@ -36,13 +36,13 @@ export default function Hero() {
     { icon: FiLinkedin, href: personalInfo.socials.linkedin, label: 'LinkedIn' },
     { icon: FiTwitter, href: personalInfo.socials.twitter, label: 'Twitter' },
     { icon: FiDribbble, href: personalInfo.socials.dribbble, label: 'Dribbble' },
-  ]
+  ].filter(({ href }) => Boolean(href))
 
   return (
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-graphite-950"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-graphite-950 px-5 sm:px-6"
     >
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -95,7 +95,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto pt-24">
+      <div className="relative z-10 text-center w-full max-w-6xl mx-auto pt-24">
         <div className="mb-8 animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
           <span className="font-mono text-2xs tracking-[0.4em] text-beige-300/60 uppercase">
             {role}

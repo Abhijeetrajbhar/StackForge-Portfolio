@@ -56,13 +56,13 @@ export default function Skills() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="skills" className="py-32 px-6 md:px-12">
+    <section id="skills" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="mb-20">
           <span className="section-tag">TECHNICAL ECOSYSTEM</span>
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <h2
-              className={`font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${
+              className={`w-full md:w-auto font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
@@ -70,7 +70,7 @@ export default function Skills() {
               <span className="text-ivory-300/30">EXPERTISE</span>
             </h2>
             <p
-              className={`text-ivory-300/40 font-mono text-2xs tracking-[0.2em] text-right uppercase transition-all duration-1000 delay-200 ${
+              className={`text-ivory-300/40 font-mono text-2xs tracking-[0.2em] text-left md:text-right uppercase transition-all duration-1000 delay-200 ${
                 inView ? 'opacity-100' : 'opacity-0'
               }`}
             >

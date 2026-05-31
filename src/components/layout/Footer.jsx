@@ -8,7 +8,7 @@ const socials = [
   { icon: FiLinkedin, href: personalInfo.socials.linkedin, label: 'LinkedIn' },
   { icon: FiTwitter, href: personalInfo.socials.twitter, label: 'Twitter' },
   { icon: FiDribbble, href: personalInfo.socials.dribbble, label: 'Dribbble' },
-]
+].filter(({ href }) => Boolean(href))
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -31,19 +31,19 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-ivory-200/5 py-12 px-6 md:px-12 bg-graphite-950">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex items-center gap-4">
+    <footer className="border-t border-ivory-200/5 py-12 px-5 sm:px-6 md:px-12 bg-graphite-950">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="flex items-start sm:items-center gap-4">
           <div className="w-5 h-5 relative">
             <div className="absolute inset-0 border border-beige-300/40 rounded-full" />
             <div className="absolute inset-[3px] bg-beige-300/30 rounded-full" />
           </div>
-          <span className="font-mono text-2xs tracking-[0.2em] text-ivory-300/30 uppercase">
+          <span className="font-mono text-2xs tracking-[0.15em] sm:tracking-[0.2em] text-ivory-300/30 uppercase">
             ©{new Date().getFullYear()} STACKFORGE. Curated Excellence.
           </span>
         </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8">
             {/* Quick message (small footer form) */}
             <div className="hidden sm:block">
               <button

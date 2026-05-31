@@ -23,7 +23,7 @@ export default function About() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="about" className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="about" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12 max-w-7xl mx-auto">
       <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         {/* Left column */}
         <div className="lg:col-span-6">
@@ -50,12 +50,12 @@ export default function About() {
 
           {/* Visual accent */}
           <div
-            className={`mt-12 flex items-center gap-4 transition-all duration-1000 delay-400 ${
+            className={`mt-12 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 transition-all duration-1000 delay-400 ${
               inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
             <div className="w-12 h-px bg-beige-300/40" />
-            <span className="font-mono text-2xs tracking-[0.3em] text-beige-300/50 uppercase">
+            <span className="font-mono text-2xs tracking-[0.2em] sm:tracking-[0.3em] text-beige-300/50 uppercase break-all">
               {personalInfo.email}
             </span>
           </div>
