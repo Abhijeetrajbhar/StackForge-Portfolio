@@ -79,7 +79,7 @@ export const projects = [
     color: '#4a6b5a',
     image: null,
     // Paste your deployed project URL here, for example: 'https://healthguardian.vercel.app'
-    liveUrl: '',
+    liveUrl: 'https://healthgurdian.vercel.app/#',
     // Paste your GitHub repository URL here, for example: 'https://github.com/Abhijeetrajbhar/healthguardian'
     sourceUrl: '',
   },
@@ -93,7 +93,7 @@ export const projects = [
     featured: true,
     color: '#c97b3a',
     image: null,
-    liveUrl: '',
+    liveUrl: 'https://restro-one-plum.vercel.app/',
     sourceUrl: '',
   },
   {
