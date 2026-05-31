@@ -21,9 +21,7 @@ export default function Footer() {
     e.preventDefault()
     const { name, email, message } = quickForm
     if (!name || !email || !message) return setQuickOpen(true)
-    // Dispatch a custom event that Contact listens for
-    window.dispatchEvent(new CustomEvent('prefillContact', { detail: { name, email, message, autoSend: true } }))
-    // Scroll to contact section
+    window.dispatchEvent(new CustomEvent('prefillContact', { detail: { name, email, message } }))
     const el = document.querySelector('#contact')
     if (el) el.scrollIntoView({ behavior: 'smooth' })
     setQuickForm({ name: '', email: '', message: '' })
