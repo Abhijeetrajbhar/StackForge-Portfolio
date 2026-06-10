@@ -37,10 +37,10 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        heading: ['"DM Serif Display"', 'Georgia', 'serif'],
-        body: ['"Cabinet Grotesk"', '"Inter"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['Georgia', '"Times New Roman"', 'serif'],
+        heading: ['Georgia', '"Times New Roman"', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"Cascadia Code"', 'Consolas', 'monospace'],
       },
       fontSize: {
         '2xs': ['0.625rem', { lineHeight: '1rem', letterSpacing: '0.15em' }],

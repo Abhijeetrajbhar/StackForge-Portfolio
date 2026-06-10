@@ -29,7 +29,7 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-ivory);
-    font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+    font-family: Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -48,6 +48,16 @@
 
   a, button {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-beige);
+    outline-offset: 4px;
+  }
+
+  button:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    outline: none;
   }
 
   ::selection {
@@ -223,6 +233,47 @@
 
   .footer-icon {
     @apply flex h-10 w-10 items-center justify-center rounded-full border border-ivory-200/10 text-ivory-300/40 transition-colors duration-300 hover:border-beige-300/40 hover:text-beige-300;
+  }
+
+  .availability-pill {
+    @apply inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-emerald-soft/25 bg-emerald-muted/10 px-3 py-2 text-center font-mono text-[8px] uppercase leading-relaxed tracking-[0.1em] text-emerald-light/80 sm:text-[9px] sm:tracking-[0.14em];
+  }
+
+  .availability-dot {
+    @apply h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-light;
+    box-shadow: 0 0 12px rgba(138, 170, 152, 0.75);
+  }
+
+  .skill-chip {
+    @apply rounded-full border border-ivory-200/10 bg-graphite-950/40 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-ivory-300/50;
+  }
+
+  .credential-card {
+    @apply flex gap-4 rounded-xl border border-ivory-200/10 bg-graphite-800/60 p-5 transition-all duration-500;
+  }
+
+  .project-card {
+    @apply overflow-hidden rounded-2xl border border-ivory-200/10 bg-graphite-800/60;
+  }
+
+  .project-visual {
+    @apply relative aspect-[16/10] overflow-hidden border-b border-ivory-200/10 bg-graphite-900 sm:aspect-video;
+  }
+
+  .project-action {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border border-ivory-200/10 text-ivory-300/50 transition-colors hover:border-beige-300/40 hover:text-beige-300;
+  }
+
+  .mobile-preview {
+    @apply absolute bottom-3 right-3 hidden h-[72%] w-[23%] overflow-hidden rounded-[1rem] border-[3px] border-graphite-950 bg-graphite-950 shadow-2xl sm:block;
+  }
+
+  .filter-button {
+    @apply rounded-full border border-ivory-200/10 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-ivory-300/40 transition-colors hover:border-ivory-200/30 hover:text-ivory-200;
+  }
+
+  .filter-button-active {
+    @apply border-beige-300/40 bg-beige-300/10 text-beige-300;
   }
 }
 

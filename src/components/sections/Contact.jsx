@@ -15,6 +15,7 @@ export default function Contact() {
         >
           <div className="min-w-0">
             <span className="section-tag">GET IN TOUCH</span>
+            <div className="mb-6"><span className="availability-pill"><span className="availability-dot" />{personalInfo.availability}</span></div>
             <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] tracking-[-0.03em] max-w-4xl">
               HAVE A PROJECT?
               <br />

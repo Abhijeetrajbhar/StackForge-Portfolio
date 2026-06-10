@@ -1,89 +1,36 @@
 import { useInView } from '../../hooks'
-import { skills } from '../../data'
-
-function SkillBar({ name, level, inView, delay }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex justify-between items-center">
-        <span className="font-mono text-2xs tracking-[0.15em] text-ivory-300/60 uppercase">{name}</span>
-        <span className="font-mono text-2xs text-beige-300/70">{level}%</span>
-      </div>
-      <div className="h-px bg-graphite-600 overflow-hidden">
-        <div
-          className="progress-fill h-full bg-gradient-to-r from-beige-300/60 to-emerald-soft/60"
-          style={{
-            width: inView ? `${level}%` : '0%',
-            transitionDelay: `${delay}ms`,
-          }}
-        />
-      </div>
-    </div>
-  )
-}
-
-function SkillCard({ category, items, index, inView }) {
-  const [cardRef, cardInView] = useInView()
-
-  return (
-    <div
-      ref={cardRef}
-      className={`glass-card-hover p-6 sm:p-8 rounded-lg transition-all duration-700 ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
-      <div className="mb-8">
-        <span className="font-mono text-2xs tracking-[0.3em] text-beige-300/50 uppercase mb-1 block">
-          0{index + 1}
-        </span>
-        <h3 className="font-display text-2xl text-ivory-100">{category}</h3>
-      </div>
-      <div className="space-y-5">
-        {items.map((skill, i) => (
-          <SkillBar
-            key={skill.name}
-            {...skill}
-            inView={cardInView}
-            delay={200 + i * 100}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
+import { skillGroups } from '../../data'
 
 export default function Skills() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="skills" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 md:px-12">
+    <section id="skills" className="section-shell">
       <div className="max-w-7xl mx-auto">
-        <div ref={ref} className="mb-20">
-          <span className="section-tag">TECHNICAL ECOSYSTEM</span>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <h2
-              className={`w-full md:w-auto font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-1000 ${
-                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-            >
-              SKILLS &<br />
-              <span className="text-ivory-300/30">EXPERTISE</span>
-            </h2>
-            <p
-              className={`text-ivory-300/40 font-mono text-2xs tracking-[0.2em] text-left md:text-right uppercase transition-all duration-1000 delay-200 ${
-                inView ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              Q4 2024
+        <div ref={ref} className="mb-14 lg:mb-20">
+          <span className="section-tag">TECHNICAL TOOLKIT</span>
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.6fr] lg:items-end">
+            <h2 className={`font-display text-[clamp(2.5rem,6vw,5rem)] leading-none transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              SKILLS BUILT
               <br />
-              VERSION
+              <span className="text-ivory-300/30">THROUGH PROJECTS</span>
+            </h2>
+            <p className="max-w-md text-sm leading-relaxed text-ivory-300/45 lg:justify-self-end">
+              An honest view of the technologies I can use today and the areas I am actively strengthening.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {skills.map((skill, i) => (
-            <SkillCard key={skill.category} {...skill} index={i} inView={inView} />
+        <div className="grid gap-5 lg:grid-cols-3">
+          {skillGroups.map((group, index) => (
+            <article key={group.level} className={`glass-card-hover rounded-xl p-6 sm:p-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+              <span className="font-mono text-[9px] tracking-[0.22em] text-beige-300/55 uppercase">0{index + 1}</span>
+              <h3 className="mt-3 font-display text-3xl text-ivory-100">{group.level}</h3>
+              <p className="mt-3 min-h-10 text-sm leading-relaxed text-ivory-300/45">{group.description}</p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {group.items.map((skill) => <span key={skill} className="skill-chip">{skill}</span>)}
+              </div>
+            </article>
           ))}
         </div>
       </div>

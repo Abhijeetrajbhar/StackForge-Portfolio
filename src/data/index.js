@@ -1,69 +1,41 @@
 export const personalInfo = {
   name: 'Abhijeet Rajbhar',
-  title: 'Software Developer — MERN Stack Developer',
-  tagline: 'Building scalable full-stack applications with modern web technologies.',
-  bio: `Passionate Software Developer specializing in MERN stack development, RESTful APIs, and scalable backend systems. Strong foundation in Data Structures, Algorithms, Object-Oriented Programming, DBMS, and Operating Systems.`,
-  bio2: `Focused on developing secure, responsive, and production-ready applications using React.js, Node.js, Express.js, and MongoDB. Currently exploring AI-powered integrations for intelligent web platforms.`,
+  title: 'MERN Stack Developer',
+  tagline: 'MERN stack developer building secure, scalable web applications from responsive interfaces to production-ready APIs.',
+  bio: 'I am a software developer focused on building complete web products with React, Node.js, Express, and MongoDB. I enjoy turning complex workflows into clear, dependable user experiences.',
+  bio2: 'My work covers authentication, role-based access, REST APIs, payments, responsive UI, and data modeling. I am currently expanding my skills in TypeScript, Prisma, and AI-powered product features.',
   email: 'abhijeetrajbhar436@gmail.com',
   location: 'Uttar Pradesh, India',
+  availability: 'Open to software development roles and selected collaborations',
   socials: {
     github: 'https://github.com/Abhijeetrajbhar',
     linkedin: 'https://linkedin.com/in/abhijeetrajbhar',
     twitter: 'https://twitter.com/AbhijeetRajbhar',
-    // dribbble: 'https://dribbble.com/AbhijeetRajbhar',
   },
 }
 
 export const stats = [
-  { value: '3+', label: 'Major Projects' },
+  { value: '3+', label: 'Full-stack Projects' },
   { value: '10+', label: 'Technologies Used' },
+  { value: '2', label: 'Live Applications' },
   { value: '2025', label: 'Hackathon Participant' },
-  { value: '100%', label: 'Learning Driven' },
 ]
 
-export const skills = [
+export const skillGroups = [
   {
-    category: 'FRONTEND',
-    icon: 'layers',
-    items: [
-      { name: 'React.js', level: 88 },
-      { name: 'Redux Toolkit', level: 80 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'Material UI', level: 78 },
-      { name: 'JavaScript', level: 85 },
-    ],
+    level: 'Comfortable',
+    description: 'Tools I use to build complete application features.',
+    items: ['React.js', 'JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Tailwind CSS', 'Git & GitHub'],
   },
   {
-    category: 'BACKEND',
-    icon: 'storage',
-    items: [
-      { name: 'Node.js', level: 86 },
-      { name: 'Express.js', level: 84 },
-      { name: 'REST APIs', level: 88 },
-      { name: 'JWT Authentication', level: 82 },
-      { name: 'Prisma ORM', level: 72 },
-    ],
+    level: 'Working knowledge',
+    description: 'Technologies I have applied in projects and continue to deepen.',
+    items: ['Redux Toolkit', 'Material UI', 'JWT & RBAC', 'Stripe', 'SQL', 'Postman', 'Multer', 'Database Design'],
   },
   {
-    category: 'DATABASE',
-    icon: 'database',
-    items: [
-      { name: 'MongoDB', level: 85 },
-      { name: 'SQL', level: 75 },
-      { name: 'Database Design', level: 76 },
-      { name: 'Data Management', level: 80 },
-    ],
-  },
-  {
-    category: 'TOOLS & CONCEPTS',
-    icon: 'build',
-    items: [
-      { name: 'Git & GitHub', level: 82 },
-      { name: 'Postman', level: 78 },
-      { name: 'VS Code', level: 90 },
-      { name: 'DSA & OOP', level: 84 },
-      { name: 'Operating Systems', level: 72 },
-    ],
+    level: 'Currently learning',
+    description: 'Capabilities I am actively developing for future products.',
+    items: ['TypeScript', 'Prisma ORM', 'AI Integrations', 'System Design', 'Testing', 'Cloud Deployment'],
   },
 ]
 
@@ -73,41 +45,63 @@ export const projects = [
     title: 'HEALTHGUARDIAN',
     category: 'HEALTHCARE',
     year: '2025',
-    description: 'A full-stack healthcare management platform designed to manage patient records, doctor workflows, and secure medical data handling with AI-assisted healthcare recommendations.',
+    summary: 'A secure healthcare workflow platform for patients, doctors, and medical information.',
+    image: '/projects/healthguardian.png',
+    mobileImage: '/projects/healthguardian-mobile.png',
+    imageAlt: 'HealthGuardian healthcare platform home screen',
+    color: '#6b8f7c',
     tags: ['MERN Stack', 'JWT', 'RBAC', 'Multer', 'AI Integration'],
-    featured: true,
-    color: '#4a6b5a',
-    image: null,
-    // Paste your deployed project URL here, for example: 'https://healthguardian.vercel.app'
-    liveUrl: 'https://healthgurdian.vercel.app/#',
-    // Paste your GitHub repository URL here, for example: 'https://github.com/Abhijeetrajbhar/healthguardian'
-    sourceUrl: '',
+    liveUrl: 'https://healthgurdian.vercel.app/',
+    sourceUrl: 'https://github.com/Abhijeetrajbhar/healthgurdian',
+    caseStudy: {
+      problem: 'Healthcare workflows often scatter patient information, appointments, and guidance across disconnected tools.',
+      contribution: 'Designed and built the full-stack experience, including responsive interfaces, authentication, protected workflows, and medical-data handling.',
+      challenge: 'Keeping role-specific experiences clear while protecting routes and handling uploaded information safely.',
+      result: 'Delivered a deployed application with patient and doctor workflows, secure access control, uploads, and AI-assisted recommendations.',
+    },
+    highlights: ['Multi-role access', 'Secure authentication', 'AI-assisted guidance'],
   },
   {
     id: 2,
     title: 'RESTROONE',
     category: 'FOOD DELIVERY',
     year: '2025',
-    description: 'A responsive food delivery web application with seamless ordering, cart management, secure authentication, and Stripe payment integration.',
-    tags: ['React.js', 'Node.js', 'MongoDB', 'Stripe'],
-    featured: true,
+    summary: 'A responsive food-ordering application covering discovery, cart, authentication, and checkout.',
+    image: '/projects/restroone.png',
+    mobileImage: '/projects/restroone-mobile.png',
+    imageAlt: 'RestroOne food delivery application home screen',
     color: '#c97b3a',
-    image: null,
+    tags: ['React.js', 'Node.js', 'MongoDB', 'Stripe'],
     liveUrl: 'https://restro-one-plum.vercel.app/',
-    sourceUrl: '',
+    sourceUrl: 'https://github.com/Abhijeetrajbhar/RestroOne',
+    caseStudy: {
+      problem: 'Food-ordering products need a fast path from browsing to a trustworthy checkout on every screen size.',
+      contribution: 'Built the customer-facing flow, cart state, authentication, backend integration, and Stripe payment experience.',
+      challenge: 'Maintaining consistent cart and checkout state while keeping the interface responsive across devices.',
+      result: 'Shipped a deployed ordering flow with product browsing, cart management, secure sign-in, and payment integration.',
+    },
+    highlights: ['Responsive ordering flow', 'Cart management', 'Stripe checkout'],
   },
   {
     id: 3,
     title: 'SCHOOL MANAGEMENT SYSTEM',
     category: 'EDTECH',
     year: '2025',
-    description: 'A modular school management platform supporting attendance, assignments, grading, authentication, and dashboard-based administration.',
-    tags: ['MERN', 'TypeScript', 'Prisma', 'Tailwind CSS'],
-    featured: true,
-    color: '#6b8f7c',
+    summary: 'A modular administration platform for attendance, assignments, grading, and school operations.',
     image: null,
+    mobileImage: null,
+    imageAlt: 'School management system project preview',
+    color: '#6b8f7c',
+    tags: ['MERN', 'TypeScript', 'Prisma', 'Tailwind CSS'],
     liveUrl: '',
-    sourceUrl: '',
+    sourceUrl: 'https://github.com/Abhijeetrajbhar/sms',
+    caseStudy: {
+      problem: 'School teams need one structured place to manage academic records and recurring administrative workflows.',
+      contribution: 'Designed the modular dashboard architecture, role-aware workflows, and data model for core school operations.',
+      challenge: 'Organizing connected academic data while keeping each role focused on the actions relevant to them.',
+      result: 'Created a scalable project foundation for attendance, assignments, grades, authentication, and administration.',
+    },
+    highlights: ['Role-aware dashboards', 'Academic workflows', 'Modular architecture'],
   },
 ]
 
@@ -116,12 +110,12 @@ export const experience = [
     role: 'MERN Stack Developer',
     company: 'Personal & Academic Projects',
     location: 'India',
-    period: '2024 — PRESENT',
-    description: 'Developing scalable full-stack web applications using modern MERN stack technologies with focus on authentication, APIs, responsive UI, and secure backend systems.',
+    period: '2024 - Present',
+    description: 'Building full-stack web applications with responsive interfaces, secure authentication, REST APIs, and practical product workflows.',
     achievements: [
-      'Built multiple full-stack MERN applications',
-      'Implemented JWT authentication and RBAC systems',
-      'Integrated Stripe payment workflows',
+      'Delivered two publicly deployed full-stack applications',
+      'Implemented JWT authentication and role-based access control',
+      'Integrated Stripe payments and AI-assisted product features',
     ],
   },
 ]
@@ -131,40 +125,17 @@ export const education = [
     degree: 'Master of Computer Applications',
     institution: 'Kamla Nehru Institute of Technology',
     location: 'Sultanpur, UP',
-    period: 'Aug. 2024 — Present',
+    period: 'Aug. 2024 - Present',
   },
   {
     degree: 'Bachelor of Computer Applications',
     institution: 'Babasaheb Bhimrao Ambedkar University',
     location: 'Lucknow, UP',
-    period: 'Aug. 2021 — May 2024',
+    period: 'Aug. 2021 - May 2024',
   },
 ]
 
 export const certifications = [
-  {
-    title: 'AKTU AI Tech Hackathon 2025',
-    issuer: 'HCL GUVI',
-    year: '2025',
-  },
-  {
-    title: 'JavaScript Certification Course',
-    issuer: 'Complete Coding by Prashant Sir',
-    year: '2025',
-  },
-]
-
-export const testimonials = [
-  {
-    quote: 'Passionate developer with strong problem-solving skills and dedication toward building scalable web applications.',
-    author: 'Team Collaboration',
-    role: 'Project Experience',
-    initial: 'TC',
-  },
-  {
-    quote: 'Focused on writing clean backend logic and creating responsive user experiences using modern technologies.',
-    author: 'Development Practice',
-    role: 'MERN Stack Projects',
-    initial: 'DP',
-  },
+  { title: 'AKTU AI Tech Hackathon 2025', issuer: 'HCL GUVI', year: '2025' },
+  { title: 'JavaScript Certification Course', issuer: 'Complete Coding by Prashant Sir', year: '2025' },
 ]

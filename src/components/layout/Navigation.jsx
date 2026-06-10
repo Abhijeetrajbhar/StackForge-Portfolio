@@ -5,12 +5,14 @@ const navLinks = [
   { label: 'WORK', href: '#projects' },
   { label: 'EXPERTISE', href: '#skills' },
   { label: 'JOURNEY', href: '#experience' },
+  { label: 'EDUCATION', href: '#education' },
   { label: 'CONTACT', href: '#contact' },
 ]
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
   const progress = useScrollProgress()
 
   useEffect(() => {
@@ -18,6 +20,28 @@ export default function Navigation() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    const sections = ['hero', 'about', ...navLinks.map(({ href }) => href.slice(1))]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id)),
+      { rootMargin: '-35% 0px -55%', threshold: 0 }
+    )
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    const closeOnEscape = (event) => event.key === 'Escape' && setMobileOpen(false)
+    document.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [mobileOpen])
 
   const handleNav = (e, href) => {
     e.preventDefault()
@@ -58,16 +82,17 @@ export default function Navigation() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNav(e, link.href)}
-                className="font-mono text-2xs tracking-[0.2em] text-ivory-300/50 hover:text-ivory-100 transition-colors duration-300 relative group"
+                aria-current={activeSection === link.href.slice(1) ? 'page' : undefined}
+                className={`font-mono text-2xs tracking-[0.16em] hover:text-ivory-100 transition-colors duration-300 relative group ${activeSection === link.href.slice(1) ? 'text-beige-300' : 'text-ivory-300/50'}`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-beige-300 group-hover:w-full transition-all duration-300" />
+                <span className={`absolute -bottom-1 left-0 h-px bg-beige-300 transition-all duration-300 ${activeSection === link.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </a>
             ))}
           </div>
@@ -76,16 +101,19 @@ export default function Navigation() {
           <a
             href="#contact"
             onClick={(e) => handleNav(e, '#contact')}
-            className="hidden md:block btn-primary text-graphite-900 bg-ivory-200 text-2xs py-3 px-7"
+            className="hidden lg:block btn-primary text-graphite-900 bg-ivory-200 text-2xs py-3 px-7"
           >
             LET'S TALK
           </a>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col gap-[5px] p-2"
+            type="button"
+            className="lg:hidden flex flex-col gap-[5px] p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             <span className={`block w-6 h-px bg-ivory-200 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[6px]' : ''}`} />
             <span className={`block w-4 h-px bg-ivory-200/60 transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
@@ -95,8 +123,9 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden transition-all duration-500 overflow-hidden ${
-            mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          id="mobile-navigation"
+          className={`lg:hidden transition-all duration-500 overflow-hidden ${
+            mobileOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="px-6 py-6 bg-graphite-900 border-t border-ivory-200/5 flex flex-col gap-6">
@@ -105,7 +134,8 @@ export default function Navigation() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNav(e, link.href)}
-                className="font-mono text-2xs tracking-[0.2em] text-ivory-300/70 hover:text-ivory-100 transition-colors"
+                aria-current={activeSection === link.href.slice(1) ? 'page' : undefined}
+                className={`font-mono text-2xs tracking-[0.2em] hover:text-ivory-100 transition-colors ${activeSection === link.href.slice(1) ? 'text-beige-300' : 'text-ivory-300/70'}`}
               >
                 {link.label}
               </a>

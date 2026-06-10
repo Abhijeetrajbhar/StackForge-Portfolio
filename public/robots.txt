@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stack-forge-portfolio.vercel.app/sitemap.xml

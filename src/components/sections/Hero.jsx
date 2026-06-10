@@ -1,12 +1,7 @@
-import { useTypewriter } from '../../hooks'
 import { personalInfo } from '../../data'
 import { FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiArrowDown } from 'react-icons/fi'
 
-const roles = ['FRONTEND ARTISAN', 'DIGITAL CRAFTSPERSON', 'EXPERIENCE ENGINEER']
-
 export default function Hero() {
-  const role = useTypewriter(roles, 80, 2500)
-
   const scrollDown = () => {
     document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -75,22 +70,19 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative z-10 text-center w-full max-w-6xl mx-auto py-28 sm:py-32">
-        <div className="mb-8 animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-          <span className="font-mono text-2xs tracking-[0.4em] text-beige-300/60 uppercase">
-            {role}
-            <span className="inline-block w-[2px] h-[0.85em] bg-beige-300/60 ml-1 animate-pulse" />
-          </span>
+        <div className="mb-8 max-w-full animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
+          <span className="availability-pill"><span className="availability-dot" />{personalInfo.availability}</span>
         </div>
 
         <h1
-          className="font-display text-[clamp(2.75rem,10vw,9rem)] leading-[0.9] tracking-[-0.03em] mb-8 text-ivory-100 animate-fade-up opacity-0"
+          className="font-display text-[clamp(2.05rem,10vw,9rem)] leading-[0.9] tracking-[-0.04em] mb-8 text-ivory-100 animate-fade-up opacity-0"
           style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
         >
-          CRAFTING
+          MERN STACK
           <br />
-          <em className="text-gradient-amber not-italic">DIGITAL</em>
+          <em className="text-gradient-amber not-italic">DEVELOPER</em>
           <br />
-          <span className="text-ivory-300/40">EXCELLENCE</span>
+          <span className="text-ivory-300/40">BUILDING FOR SCALE</span>
         </h1>
 
         <p
