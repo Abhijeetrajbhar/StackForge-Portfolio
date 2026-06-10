@@ -27,7 +27,7 @@ function SkillCard({ category, items, index, inView }) {
   return (
     <div
       ref={cardRef}
-      className={`glass-card-hover p-8 rounded-lg transition-all duration-700 ${
+      className={`glass-card-hover p-6 sm:p-8 rounded-lg transition-all duration-700 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}

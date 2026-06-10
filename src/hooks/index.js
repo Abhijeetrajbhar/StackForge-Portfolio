@@ -26,14 +26,23 @@ export function useScrollProgress() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    let frame
     const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.body.scrollHeight - window.innerHeight
-      setProgress(scrollTop / docHeight)
+      if (frame) return
+      frame = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY
+        const docHeight = document.body.scrollHeight - window.innerHeight
+        setProgress(docHeight > 0 ? scrollTop / docHeight : 0)
+        frame = null
+      })
     }
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
   }, [])
 
   return progress
@@ -46,11 +55,13 @@ export function useTypewriter(words, speed = 100, pause = 2000) {
 
   useEffect(() => {
     const currentWord = words[wordIndex]
+    const delay = !isDeleting && text === currentWord ? pause : isDeleting ? speed / 2 : speed
     const timeout = setTimeout(() => {
       if (!isDeleting) {
-        setText(currentWord.slice(0, text.length + 1))
         if (text === currentWord) {
-          setTimeout(() => setIsDeleting(true), pause)
+          setIsDeleting(true)
+        } else {
+          setText(currentWord.slice(0, text.length + 1))
         }
       } else {
         setText(currentWord.slice(0, text.length - 1))
@@ -59,7 +70,7 @@ export function useTypewriter(words, speed = 100, pause = 2000) {
           setWordIndex((prev) => (prev + 1) % words.length)
         }
       }
-    }, isDeleting ? speed / 2 : speed)
+    }, delay)
 
     return () => clearTimeout(timeout)
   }, [text, wordIndex, isDeleting, words, speed, pause])
@@ -73,14 +84,16 @@ export function useCountUp(target, duration = 2000, start = false) {
   useEffect(() => {
     if (!start) return
     let startTime = null
+    let frame
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
       setCount(Math.floor(eased * target))
-      if (progress < 1) requestAnimationFrame(step)
+      if (progress < 1) frame = requestAnimationFrame(step)
     }
-    requestAnimationFrame(step)
+    frame = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(frame)
   }, [start, target, duration])
 
   return count

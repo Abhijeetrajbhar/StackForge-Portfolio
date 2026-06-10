@@ -48,7 +48,7 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`glass-card p-10 md:p-12 rounded-xl flex flex-col justify-between transition-all duration-700 ${
+              className={`glass-card p-6 sm:p-10 md:p-12 rounded-xl flex flex-col justify-between transition-all duration-700 ${
                 i === active
                   ? 'border-beige-300/20 bg-graphite-800/50'
                   : 'opacity-50 hover:opacity-75'

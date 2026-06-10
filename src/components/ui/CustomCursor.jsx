@@ -1,64 +1,42 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function CustomCursor() {
   const dotRef = useRef(null)
   const ringRef = useRef(null)
-  const [hovering, setHovering] = useState(false)
-  const pos = useRef({ x: 0, y: 0 })
-  const ring = useRef({ x: 0, y: 0 })
-  const animFrameRef = useRef(null)
-
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches
-    if (isMobile) return
+    const finePointer = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)')
+    if (!finePointer.matches) return
 
     document.body.classList.add('custom-cursor-active')
 
     const onMove = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY }
-      if (dotRef.current) {
-        dotRef.current.style.left = e.clientX + 'px'
-        dotRef.current.style.top = e.clientY + 'px'
-      }
+      const position = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`
+      if (dotRef.current) dotRef.current.style.transform = position
+      if (ringRef.current) ringRef.current.style.transform = position
     }
 
-    const animate = () => {
-      ring.current.x = ring.current.x + (pos.current.x - ring.current.x) * 0.12
-      ring.current.y = ring.current.y + (pos.current.y - ring.current.y) * 0.12
-      if (ringRef.current) {
-        ringRef.current.style.left = ring.current.x + 'px'
-        ringRef.current.style.top = ring.current.y + 'px'
-      }
-      animFrameRef.current = requestAnimationFrame(animate)
-    }
-    animFrameRef.current = requestAnimationFrame(animate)
-
-    const onEnter = () => setHovering(true)
-    const onLeave = () => setHovering(false)
-
-    const interactives = document.querySelectorAll('a, button, [data-cursor="hover"]')
-    interactives.forEach((el) => {
-      el.addEventListener('mouseenter', onEnter)
-      el.addEventListener('mouseleave', onLeave)
-    })
+    const onOver = (e) => ringRef.current?.classList.toggle('hovering', Boolean(e.target.closest('a, button')))
+    const onLeaveWindow = () => document.body.classList.add('cursor-hidden')
+    const onEnterWindow = () => document.body.classList.remove('cursor-hidden')
 
     document.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseover', onOver)
+    document.documentElement.addEventListener('mouseleave', onLeaveWindow)
+    document.documentElement.addEventListener('mouseenter', onEnterWindow)
 
     return () => {
       document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onOver)
+      document.documentElement.removeEventListener('mouseleave', onLeaveWindow)
+      document.documentElement.removeEventListener('mouseenter', onEnterWindow)
       document.body.classList.remove('custom-cursor-active')
-      cancelAnimationFrame(animFrameRef.current)
-      interactives.forEach((el) => {
-        el.removeEventListener('mouseenter', onEnter)
-        el.removeEventListener('mouseleave', onLeave)
-      })
     }
   }, [])
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot hidden md:block" />
-      <div ref={ringRef} className={`cursor-ring hidden md:block ${hovering ? 'hovering' : ''}`} />
+      <div ref={dotRef} className="cursor-dot" />
+      <div ref={ringRef} className="cursor-ring" />
     </>
   )
 }

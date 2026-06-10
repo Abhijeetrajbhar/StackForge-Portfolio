@@ -37,7 +37,7 @@ export default function Navigation() {
       <header
         className={`fixed top-0 w-full z-40 transition-all duration-700 ${
           scrolled
-            ? 'bg-graphite-900/80 backdrop-blur-xl border-b border-ivory-200/5 py-4'
+            ? 'bg-graphite-900/95 border-b border-ivory-200/10 py-3'
             : 'bg-transparent py-6'
         }`}
       >
@@ -99,7 +99,7 @@ export default function Navigation() {
             mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="px-6 py-6 bg-graphite-900/95 backdrop-blur-xl border-t border-ivory-200/5 flex flex-col gap-6">
+          <div className="px-6 py-6 bg-graphite-900 border-t border-ivory-200/5 flex flex-col gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}

@@ -26,7 +26,7 @@ function ExperienceItem({ item, index, parentInView }) {
       />
 
       <div
-        className={`glass-card-hover p-8 rounded-lg transition-all duration-700 ${
+        className={`glass-card-hover p-5 sm:p-8 rounded-lg transition-all duration-700 ${
           inView ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
         }`}
         style={{ transitionDelay: `${100 + index * 50}ms` }}

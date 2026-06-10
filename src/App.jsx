@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import CustomCursor from './components/ui/CustomCursor'
 import { NoiseOverlay } from './components/ui'
 import Navigation from './components/layout/Navigation'
@@ -12,13 +11,8 @@ import Testimonials from './components/sections/Testimonials'
 import Contact from './components/sections/Contact'
 
 export default function App() {
-  useEffect(() => {
-    // Set theme
-    document.documentElement.classList.add('dark')
-  }, [])
-
   return (
-    <div className="min-h-screen bg-graphite-950 text-ivory-100 overflow-x-hidden">
+    <div className="min-h-screen bg-graphite-950 text-ivory-100 overflow-x-clip">
       <NoiseOverlay />
       <CustomCursor />
       <Navigation />

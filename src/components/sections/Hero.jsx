@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { useTypewriter } from '../../hooks'
 import { personalInfo } from '../../data'
 import { FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiArrowDown } from 'react-icons/fi'
@@ -7,25 +6,6 @@ const roles = ['FRONTEND ARTISAN', 'DIGITAL CRAFTSPERSON', 'EXPERIENCE ENGINEER'
 
 export default function Hero() {
   const role = useTypewriter(roles, 80, 2500)
-  const heroRef = useRef(null)
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!heroRef.current) return
-      const { clientX, clientY } = e
-      const { width, height } = heroRef.current.getBoundingClientRect()
-      const x = (clientX / width - 0.5) * 20
-      const y = (clientY / height - 0.5) * 20
-      const orbs = heroRef.current.querySelectorAll('.parallax-orb')
-      orbs.forEach((orb, i) => {
-        const factor = (i + 1) * 0.4
-        orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`
-      })
-    }
-    const el = heroRef.current
-    el?.addEventListener('mousemove', handleMouseMove)
-    return () => el?.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const scrollDown = () => {
     document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
@@ -41,21 +21,20 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-graphite-950 px-5 sm:px-6"
+      className="relative min-h-[100svh] flex flex-col justify-center items-center overflow-hidden bg-graphite-950 px-5 sm:px-6"
     >
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="parallax-orb absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 transition-transform duration-700 ease-out"
+          className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 rounded-full opacity-10"
           style={{ background: 'radial-gradient(circle, #6b8f7c 0%, transparent 70%)' }}
         />
         <div
-          className="parallax-orb absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full opacity-8 transition-transform duration-700 ease-out"
+          className="absolute bottom-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full opacity-8"
           style={{ background: 'radial-gradient(circle, #c97b3a 0%, transparent 70%)' }}
         />
         <div
-          className="parallax-orb absolute top-1/2 right-1/3 w-64 h-64 rounded-full opacity-5 transition-transform duration-700 ease-out"
+          className="absolute top-1/2 right-1/3 w-56 h-56 sm:w-64 sm:h-64 rounded-full opacity-5"
           style={{ background: 'radial-gradient(circle, #c9bfa9 0%, transparent 70%)' }}
         />
       </div>
@@ -95,7 +74,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center w-full max-w-6xl mx-auto pt-24">
+      <div className="relative z-10 text-center w-full max-w-6xl mx-auto py-28 sm:py-32">
         <div className="mb-8 animate-fade-in opacity-0" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
           <span className="font-mono text-2xs tracking-[0.4em] text-beige-300/60 uppercase">
             {role}
@@ -104,7 +83,7 @@ export default function Hero() {
         </div>
 
         <h1
-          className="font-display text-[clamp(3rem,10vw,9rem)] leading-none tracking-tight mb-8 text-ivory-100 animate-fade-up opacity-0"
+          className="font-display text-[clamp(2.75rem,10vw,9rem)] leading-[0.9] tracking-[-0.03em] mb-8 text-ivory-100 animate-fade-up opacity-0"
           style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
         >
           CRAFTING
@@ -164,7 +143,7 @@ export default function Hero() {
       {/* Scroll cue */}
       <button
         onClick={scrollDown}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 hover:opacity-70 transition-opacity duration-300 animate-fade-in"
+        className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 opacity-30 hover:opacity-70 transition-opacity duration-300 animate-fade-in"
         style={{ animationDelay: '1500ms', animationFillMode: 'forwards' }}
         aria-label="Scroll down"
       >

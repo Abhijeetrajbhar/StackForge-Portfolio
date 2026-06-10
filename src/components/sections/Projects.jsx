@@ -31,7 +31,7 @@ function ProjectCard({ project, index, inView }) {
     >
       {/* Card visual area */}
       <div
-        className="relative overflow-hidden rounded-lg aspect-video glass-card-hover mb-6 cursor-none"
+        className="relative overflow-hidden rounded-lg aspect-video glass-card-hover mb-6"
         style={{ aspectRatio: project.featured ? '16/9' : '4/3' }}
       >
         {/* Abstract visual */}
@@ -57,7 +57,7 @@ function ProjectCard({ project, index, inView }) {
             className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
               hovered ? 'opacity-100' : 'opacity-0'
             }`}
-            style={{ background: 'rgba(13,12,11,0.7)', backdropFilter: 'blur(8px)' }}
+            style={{ background: 'rgba(13,12,11,0.88)' }}
           >
             {projectActions.map(({ href, label, icon: Icon, className }) => (
               <a
