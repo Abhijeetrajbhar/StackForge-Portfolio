@@ -253,11 +253,11 @@
   }
 
   .project-card {
-    @apply overflow-hidden rounded-2xl border border-ivory-200/10 bg-graphite-800/60;
+    @apply overflow-hidden rounded-lg border border-ivory-200/10 bg-graphite-800/60 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-stretch;
   }
 
   .project-visual {
-    @apply relative aspect-[16/10] overflow-hidden border-b border-ivory-200/10 bg-graphite-900 sm:aspect-video;
+    @apply relative min-w-0 aspect-[16/10] overflow-hidden border-b border-ivory-200/10 bg-graphite-900 sm:aspect-video lg:aspect-auto lg:h-full lg:min-h-[22rem] lg:border-b-0 lg:border-r;
   }
 
   .project-action {

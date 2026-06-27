@@ -1,6 +1,6 @@
 import { useInView } from '../../hooks'
 import { personalInfo } from '../../data'
-import { FiArrowUpRight, FiMail, FiMapPin } from 'react-icons/fi'
+import { FiArrowUpRight, FiMail, FiMapPin, FiPhone } from 'react-icons/fi'
 
 export default function Contact() {
   const [ref, inView] = useInView()
@@ -32,6 +32,14 @@ export default function Contact() {
               <span className="min-w-0">
                 <span className="contact-label">Email</span>
                 <span className="block break-all text-sm sm:text-base">{personalInfo.email}</span>
+              </span>
+              <FiArrowUpRight className="ml-auto shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
+            <a href={`tel:${personalInfo.phone}`} className="contact-link group">
+              <FiPhone size={18} />
+              <span>
+                <span className="contact-label">Phone</span>
+                <span className="block text-sm sm:text-base">{personalInfo.phone}</span>
               </span>
               <FiArrowUpRight className="ml-auto shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>

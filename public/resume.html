@@ -2,54 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Abhijeet Rajbhar - Resume</title>
   <style>
-    @page { size: A4; margin: 12mm 14mm; }
+    @page { size: A4; margin: 10mm 12mm; }
     * { box-sizing: border-box; }
-    body { margin: 0; color: #1b1b1b; font: 10.5px/1.35 Arial, sans-serif; }
-    header { text-align: center; border-bottom: 2px solid #315747; padding-bottom: 8px; }
-    h1 { margin: 0; font: 700 25px/1.1 Georgia, serif; letter-spacing: .05em; }
-    header strong { display: block; margin: 4px 0; color: #315747; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    header p { margin: 0; color: #555; font-size: 9px; }
-    section { margin-top: 9px; }
-    h2 { margin: 0 0 4px; border-bottom: 1px solid #cfd8d3; color: #315747; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
-    h3 { margin: 5px 0 1px; font-size: 10.5px; }
-    p { margin: 2px 0; }
-    ul { margin: 2px 0 4px; padding-left: 16px; }
-    li { margin: 1px 0; }
-    .muted { color: #666; }
-    .row { display: flex; justify-content: space-between; gap: 16px; }
-    .row > div { flex: 1; }
-    .skills strong { color: #315747; }
+    body { margin: 0; color: #171717; font: 9.4px/1.28 Arial, Helvetica, sans-serif; background: #fff; }
     a { color: inherit; text-decoration: none; }
+    header { text-align: center; border-bottom: 1.5px solid #222; padding-bottom: 6px; }
+    h1 { margin: 0; font: 700 24px/1.08 Georgia, "Times New Roman", serif; letter-spacing: .04em; text-transform: uppercase; }
+    header strong { display: block; margin: 3px 0; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+    header p { margin: 0; color: #333; font-size: 8.6px; }
+    section { margin-top: 8px; break-inside: avoid; }
+    h2 { margin: 0 0 4px; border-bottom: 1px solid #bdbdbd; font-size: 10.2px; letter-spacing: .13em; text-transform: uppercase; }
+    h3 { margin: 5px 0 1px; font-size: 10px; }
+    p { margin: 2px 0; }
+    ul { margin: 2px 0 3px; padding-left: 15px; }
+    li { margin: 1px 0; }
+    .muted { color: #555; font-weight: 400; }
+    .skills p { display: grid; grid-template-columns: 112px 1fr; gap: 8px; }
+    .skills strong { font-weight: 700; }
+    .project-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .project-title h3 { margin-bottom: 0; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media screen {
+      body { max-width: 794px; margin: 24px auto; padding: 28px 34px; box-shadow: 0 12px 40px rgba(0,0,0,.12); }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>ABHIJEET RAJBHAR</h1>
-    <strong>MERN Stack Developer</strong>
-    <p>Uttar Pradesh, India | abhijeetrajbhar436@gmail.com | github.com/Abhijeetrajbhar | linkedin.com/in/abhijeetrajbhar</p>
+    <h1>Abhijeet Rajbhar</h1>
+    <strong>Software Developer | MERN Stack Developer</strong>
+    <p>
+      9335122608 |
+      <a href="mailto:abhijeetrajbhar436@gmail.com">abhijeetrajbhar436@gmail.com</a> |
+      <a href="https://www.linkedin.com/in/abhijeet-rajbhar-dev">LinkedIn</a> |
+      <a href="https://github.com/Abhijeetrajbhar">GitHub</a> |
+      <a href="https://stack-forge-portfolio.vercel.app">Portfolio</a>
+    </p>
   </header>
 
-  <section><h2>Profile</h2><p>MERN stack developer building secure, scalable web applications across responsive React interfaces, REST APIs, authentication, role-based access, payments, and data-driven workflows.</p></section>
-  <section class="skills"><h2>Technical Skills</h2><p><strong>Core:</strong> React.js, JavaScript, Node.js, Express.js, MongoDB, REST APIs, Tailwind CSS, Git & GitHub</p><p><strong>Additional:</strong> Redux Toolkit, Material UI, JWT, RBAC, Stripe, SQL, Postman, Multer, TypeScript, Prisma</p></section>
+  <section>
+    <h2>Summary</h2>
+    <ul>
+      <li>Software Developer skilled in MERN stack, RESTful APIs, and scalable backend systems. Proficient in JavaScript, Node.js, Express.js, React.js, and MongoDB with strong foundation in Data Structures, Algorithms, and OOP.</li>
+    </ul>
+  </section>
+
+  <section class="skills">
+    <h2>Technical Skills</h2>
+    <p><strong>Programming Languages</strong><span>Java, JavaScript</span></p>
+    <p><strong>Frontend</strong><span>React.js, Redux Toolkit, Tailwind CSS, Material UI</span></p>
+    <p><strong>Backend</strong><span>Node.js, Express.js, REST APIs</span></p>
+    <p><strong>Database</strong><span>MongoDB, SQL</span></p>
+    <p><strong>Core Concepts</strong><span>Data Structures, Algorithms, OOP, DBMS, Operating Systems</span></p>
+    <p><strong>Tools</strong><span>Git, GitHub, Postman, VS Code</span></p>
+    <p><strong>Deployment</strong><span>Vercel, Render</span></p>
+  </section>
 
   <section>
     <h2>Projects</h2>
-    <h3>HealthGuardian <span class="muted">| MERN Stack, JWT, RBAC, Multer, AI Integration</span></h3>
-    <ul><li>Built a deployed healthcare platform with patient and doctor workflows, protected routes, uploads, and AI-assisted recommendations.</li><li>Implemented secure authentication and role-based access to keep each workflow focused and protected.</li></ul>
-    <h3>RestroOne <span class="muted">| React.js, Node.js, MongoDB, Stripe</span></h3>
-    <ul><li>Delivered a responsive food-ordering flow covering product discovery, cart state, authentication, and checkout.</li><li>Integrated Stripe payments and maintained consistent customer state across the ordering journey.</li></ul>
-    <h3>School Management System <span class="muted">| MERN, TypeScript, Prisma, Tailwind CSS</span></h3>
-    <ul><li>Designed a modular platform foundation for attendance, assignments, grading, authentication, and administration.</li></ul>
+
+    <div class="project-title">
+      <h3>HealthGuardian - Healthcare Management System</h3>
+      <span class="muted">MERN Stack</span>
+    </div>
+    <ul>
+      <li>Designed and developed a full-stack healthcare platform to manage patient records and streamline doctor-patient workflows using MERN stack.</li>
+      <li>Implemented JWT-based authentication and role-based access control for Admin, Doctor, and Patient roles to ensure secure system access.</li>
+      <li>Developed RESTful APIs for handling patient history data, improving backend scalability and data retrieval efficiency.</li>
+      <li>Integrated Multer with cloud storage for secure upload and management of medical reports and documents.</li>
+      <li>Enforced admin-controlled data modification policies to maintain data integrity and prevent unauthorized access.</li>
+      <li>Currently integrating AI-based assistant to provide contextual health recommendations using patient historical data.</li>
+    </ul>
+
+    <div class="project-title">
+      <h3>RestroOne - Food Delivery Web Application</h3>
+      <span class="muted">MERN Stack, Stripe</span>
+    </div>
+    <ul>
+      <li>Developed a full-stack food delivery application enabling seamless ordering, cart management, and order tracking.</li>
+      <li>Engineered responsive UI components for menu browsing and cart operations, improving user interaction and experience.</li>
+      <li>Designed RESTful APIs for order processing, user management, and efficient backend data flow.</li>
+      <li>Implemented JWT-based authentication and role-based access for secure user and admin operations.</li>
+      <li>Integrated Stripe test mode for handling payment workflows, including duplicate and failed transaction scenarios.</li>
+    </ul>
+
+    <div class="project-title">
+      <h3>School Management System</h3>
+      <span class="muted">MERN, TypeScript, Prisma</span>
+    </div>
+    <ul>
+      <li>Built a modular full-stack school management system supporting attendance, assignments, grading, and result processing.</li>
+      <li>Developed backend APIs using Node.js, Express, and Prisma ORM with MongoDB for scalable data management.</li>
+      <li>Implemented JWT authentication with refresh tokens and role-based access for Admin, Teacher, and Student.</li>
+      <li>Designed responsive dashboards using React and Tailwind CSS with efficient state management.</li>
+      <li>Enhanced application security using bcrypt password hashing, Helmet, and CORS policies.</li>
+    </ul>
   </section>
 
-  <section><h2>Experience</h2><h3>MERN Stack Developer <span class="muted">| Personal & Academic Projects | 2024 - Present</span></h3><ul><li>Delivered two publicly deployed full-stack applications and multiple role-aware product workflows.</li><li>Applied secure authentication, REST APIs, responsive UI, Stripe payments, and AI-assisted features.</li></ul></section>
+  <section>
+    <h2>Education</h2>
+    <div class="row">
+      <div>
+        <h3>Kamla Nehru Institute of Technology</h3>
+        <p>Master of Computer Applications</p>
+        <p class="muted">Sultanpur, UP | Aug. 2024 - May 2026</p>
+      </div>
+      <div>
+        <h3>Babasaheb Bhimrao Ambedkar University</h3>
+        <p>Bachelor of Computer Applications</p>
+        <p class="muted">Lucknow, UP | Aug. 2021 - May 2024</p>
+      </div>
+    </div>
+  </section>
 
   <section>
-    <h2>Education & Certifications</h2>
-    <div class="row"><div><h3>Master of Computer Applications</h3><p>Kamla Nehru Institute of Technology</p><p class="muted">Aug. 2024 - Present</p></div><div><h3>Bachelor of Computer Applications</h3><p>Babasaheb Bhimrao Ambedkar University</p><p class="muted">Aug. 2021 - May 2024</p></div></div>
-    <p><strong>Certifications:</strong> AKTU AI Tech Hackathon 2025 - HCL GUVI | JavaScript Certification Course - Complete Coding</p>
+    <h2>Certifications</h2>
+    <p><strong>AKTU AI Tech Hackathon 2025:</strong> HCL GUVI, May 2025 - <a href="https://www.guvi.in/share-certificate/1810o62CmsW97K7804">Certificate</a></p>
+    <p><strong>JavaScript Certification Course:</strong> Complete Coding by Prashant Sir, April 2025 - <a href="https://learn.knowledgegate.ai/learn/certificate/11771593-219977">Certificate</a></p>
   </section>
 </body>
 </html>
