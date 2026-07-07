@@ -74,6 +74,7 @@ export const projects = [
     color: '#c97b3a',
     tags: ['React.js', 'Node.js', 'MongoDB', 'Stripe'],
     liveUrl: 'https://restro-one-plum.vercel.app/',
+    adminUrl: 'https://restro-one-6iq2-tau.vercel.app/',
     sourceUrl: 'https://github.com/Abhijeetrajbhar/RestroOne',
     caseStudy: {
       problem: 'Food delivery products need a smooth ordering path with trustworthy cart, order, authentication, and payment flows.',

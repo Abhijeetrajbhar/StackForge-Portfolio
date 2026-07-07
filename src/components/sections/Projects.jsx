@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useInView } from '../../hooks'
 import { projects } from '../../data'
-import { FiArrowUpRight, FiExternalLink, FiGithub } from 'react-icons/fi'
+import { FiArrowUpRight, FiExternalLink, FiGithub, FiSettings } from 'react-icons/fi'
 
 const caseLabels = {
   problem: 'Problem',
@@ -49,11 +49,16 @@ function ProjectCard({ project, index, inView }) {
           </div>
           <div className="flex gap-2">
             {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-action" aria-label={`Open ${project.title} live application`}>
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-action" aria-label={`Open ${project.title} live application`} title="Live application">
                 <FiExternalLink />
               </a>
             )}
-            <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="project-action" aria-label={`Open ${project.title} source code on GitHub`}>
+            {project.adminUrl && (
+              <a href={project.adminUrl} target="_blank" rel="noopener noreferrer" className="project-action" aria-label={`Open ${project.title} admin panel`} title="Admin panel">
+                <FiSettings />
+              </a>
+            )}
+            <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="project-action" aria-label={`Open ${project.title} source code on GitHub`} title="Source code">
               <FiGithub />
             </a>
           </div>
